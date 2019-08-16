@@ -8,6 +8,12 @@ module.exports = {
     app: './src/index.js',
     print: './src/print.js'
   },
+  // 找寻bug所在的确切位置
+  devtool: 'inline-source-map',
+  // web server，监视所有文件的变化，自动打包，自动刷新浏览器
+  devServer: {
+    contentBase: './dist'
+  },
   plugins: [
     // build 前清空dist文件夹
     new CleanWebpackPlugin(),
@@ -19,7 +25,8 @@ module.exports = {
   // 输出文件
   output: {
     filename: '[name].bundle.js',
-    path: path.resolve(__dirname, 'dist')
+    path: path.resolve(__dirname, 'dist'),
+    publicPath: '/'
   },
   module: {
     rules: [
